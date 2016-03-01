@@ -6,6 +6,7 @@ angular.module('serverConvertApp')
       .when('/', {
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        authenticate: 'admin'
       });
   });
