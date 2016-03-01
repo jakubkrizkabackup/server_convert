@@ -6,14 +6,14 @@ module.exports = {
 
   // Sequelize connection opions
   sequelize: {
-    uri: 'sqlite://',
-    options: {
-      logging: false,
-      storage: 'dev.sqlite',
-      define: {
-        timestamps: false
-      }
-    }
+    database: "server_convert",
+    username: "root",
+    password: "mysql"
+  },
+
+  config: {
+    host: "localhost",
+    dialect: 'mysql'
   },
 
   // Seed database on startup
