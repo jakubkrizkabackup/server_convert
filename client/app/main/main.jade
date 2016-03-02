@@ -4,14 +4,20 @@ header#banner.hero-unit
     p.lead Kick-start your next web app with Angular Fullstack
     img(src='assets/images/yeoman.png', alt='I\'m Yeoman')
 
+
+
+canvas.chart.chart-line.chart-data(chart-data="data",
+    chart-labels="labels", chart-legend="true", chart-series="series")
+
+
 .container
   .row
     .col-lg-12
       h1.page-header Features:
       ul.nav.nav-tabs.nav-stacked.col-md-4.col-lg-4.col-sm-6(ng-repeat='thing in main.awesomeThings')
         li
-          a(href='#', tooltip='{{thing.info}}')
-            | {{thing.name}}
+          a(href='#', tooltip='{{thing.createdAt | date : "HH:mm"}}')
+            | ${{thing.name}}
             button.close(type='button', ng-click='main.deleteThing(thing)') &times;
 
   form.thing-form
