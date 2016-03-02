@@ -10,7 +10,9 @@ angular.module('serverConvertApp', [
   'ngRoute',
   'btford.socket-io',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'ngMaterial',
+  'chart.js'
 ])
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
