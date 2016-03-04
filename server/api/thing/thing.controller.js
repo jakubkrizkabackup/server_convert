@@ -60,7 +60,13 @@ function handleError(res, statusCode) {
 
 // Gets a list of Things
 export function index(req, res) {
-  Thing.findAll()
+  Thing.findAll({
+    limit: 9,
+    order: [
+          // Will escape username and validate DESC against a list of valid direction parameters
+          ['createdAt', 'DESC']
+         ]
+  })
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

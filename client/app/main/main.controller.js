@@ -15,9 +15,13 @@ class MainController {
       []
     ];
 
-    console.log($scope.labels);
-    console.log($scope.data);
-
+    $scope.chartOptions = {
+      // Boolean - Whether to animate the chart
+      animation: true,
+      animateScale : true,
+      animationEasing : "easeInOutCirc",
+      tooltipTemplate: "$<%= value %>"
+    };
 
     $http.get('/api/things').then(response => {
       this.awesomeThings = response.data;
@@ -29,10 +33,13 @@ class MainController {
         $scope.labels.push(date.getHours() + ":" + date.getMinutes());
       }
 
-
+      $scope.data[0].reverse();
+      $scope.labels.reverse();
 
       socket.syncUpdates('thing', this.awesomeThings, function(event, item, object) {
 
+        $scope.data[0].shift();
+        $scope.labels.shift();
         $scope.data[0].push(item.name);
         var date = new Date(item.createdAt);
         $scope.labels.push(date.getHours() + ":" + date.getMinutes());

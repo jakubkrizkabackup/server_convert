@@ -13,13 +13,19 @@ exports = module.exports = require('./app');
 
 var controller = require('./api/thing/thing.controller');
 var http = require('http');
+var Pusher = require('pusher');
+
+var pusher = new Pusher({
+    appId: '184856',
+    key: '45652fa4bbbde29dd976',
+    secret: '9dfbbc2729d087aed728',
+    cluster: 'eu',
+    encrypted: true
+});
 
 var url = "http://api.coindesk.com/v1/bpi/currentprice.json";
 
 setInterval(function(){
-
-
-
 
     http.get(url, function(res){
         var body = '';
@@ -41,16 +47,6 @@ setInterval(function(){
     }).on('error', function(e){
         console.log("Got an error: ", e);
     });
-
-
-
-
-
-    /*controller.create({
-        body: {
-            name: "sadad"
-        }
-    });*/
 
 
 }, 60000);
